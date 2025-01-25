@@ -8,8 +8,33 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: false, // Make password optional
+        required: false, // Make password optional for OAuth users
     },
+    role: {
+        type: String,
+        enum: ['service_provider', 'service_user'],
+        required: true,
+    },
+    profile: {
+        name: String,
+        contact: String,
+        location: String,
+        businessName: String,
+        GSTNo: String,
+        photo: String,
+        catalog: [{
+            service: String,
+            pricing: String,
+        }],
+    },
+    ratings: {
+        type: Number,
+        default: 0,
+    },
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review',
+    }],
 });
 
 const User = mongoose.model('User', userSchema);
