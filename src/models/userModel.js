@@ -22,10 +22,10 @@ const userSchema = new mongoose.Schema({
         businessName: String,
         GSTNo: String,
         photo: String,
-        catalog: [{
-            service: String,
-            pricing: String,
-        }],
+        services: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Service'
+        }]
     },
     ratings: {
         type: Number,

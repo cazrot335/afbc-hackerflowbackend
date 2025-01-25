@@ -11,8 +11,8 @@ const serviceSchema = new mongoose.Schema({
         required: true,
     },
     description: String,
-    price: Number,
-    images: [String],
+    pricing: Number,
+    availability: String,
     specialOffers: String,
 });
 
