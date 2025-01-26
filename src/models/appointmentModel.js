@@ -6,26 +6,29 @@ const appointmentSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
-    provider: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-    },
     service: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Service',
         required: true,
     },
+    date: {
+        type: Date,
+        required: true,
+    },
     status: {
         type: String,
-        enum: ['pending', 'in_progress', 'completed', 'declined'],
+        enum: ['pending', 'accepted', 'rejected'],
         default: 'pending',
     },
-    scheduledTime: Date,
+    paymentMethod: {
+        type: String,
+        enum: ['QR', 'COD'],
+        required: true,
+    },
     paymentStatus: {
         type: String,
-        enum: ['pending', 'paid', 'failed'],
-        default: 'pending',
+        enum: ['paid', 'unpaid'],
+        default: 'unpaid',
     },
 });
 
