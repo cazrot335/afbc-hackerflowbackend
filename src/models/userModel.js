@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
         location: String,
         businessName: String,
         GSTNo: String,
-        photo: String,
+        photos: [String], // Change photo to photos and make it an array of strings
         services: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Service'
